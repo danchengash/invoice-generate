@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:invoice/core/size_config.dart';
-import 'package:invoice/features/create_invoice/presentaion/create_invoice.dart';
+import 'package:invoice/features/create_invoice/create_invoice.dart';
 import 'package:invoice/features/pdf-invoice/pdf_print_invoice.dart';
 import 'package:invoice/features/view_invoice/data/model.dart';
 import 'package:invoice/controllers/invoices_controller.dart';
@@ -56,10 +56,7 @@ class _InvoicesHomeState extends State<InvoicesHome> {
                         Container(
                           padding: const EdgeInsets.all(5),
                           child: ListTile(
-                            onTap: () => PdfPreview(
-                                shareActionExtraSubject: "filtronic invoice",
-                                pdfFileName: "invoice_filtronic.pdf",
-                                build: (context) => generateInvoice()),
+                            onTap: () => Get.to(() => ViewPdf()),
                             title: Row(
                               children: [
                                 Text(
@@ -110,5 +107,17 @@ class _InvoicesHomeState extends State<InvoicesHome> {
         ),
       ),
     );
+  }
+}
+
+class ViewPdf extends StatelessWidget {
+  const ViewPdf({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PdfPreview(
+        shareActionExtraSubject: "filtronic invoice",
+        pdfFileName: "invoice_filtronic.pdf",
+        build: (context) => generateInvoice());
   }
 }

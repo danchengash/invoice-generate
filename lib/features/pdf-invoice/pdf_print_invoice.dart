@@ -91,7 +91,7 @@ class Invoice {
     doc.addPage(
       pw.MultiPage(
         pageTheme: _buildTheme(
-          PdfPageFormat.standard,
+          PdfPageFormat.letter,
           await PdfGoogleFonts.robotoRegular(),
           await PdfGoogleFonts.robotoBold(),
           await PdfGoogleFonts.robotoItalic(),
@@ -482,7 +482,7 @@ class Invoice {
 }
 
 String _formatCurrency(double amount) {
-  return '\$${amount.toStringAsFixed(2)}';
+  return '\Ksh ${amount.toStringAsFixed(2)}';
 }
 
 String _formatDate(DateTime date) {
